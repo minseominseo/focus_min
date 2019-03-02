@@ -79,7 +79,7 @@
         android:layout_toLeftOf="@id/control"
         android:layout_marginRight="30dp"
         android:paddingBottom="10dp"
-        android:layout_alignParentBottom="true">//버튼을 수정함
+        android:layout_alignParentBottom="true">
 
         <ImageView android:id="@+id/gallery"
             android:layout_gravity="center"
