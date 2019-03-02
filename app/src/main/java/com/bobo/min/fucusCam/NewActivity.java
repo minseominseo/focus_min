@@ -2,6 +2,7 @@ package com.bobo.min.fucusCam;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
@@ -18,6 +19,17 @@ ImageView mPreview;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new);
         String path=getIntent().getStringExtra("filepath");
+/*
+        String path2 = Environment.getExternalStorageDirectory().getAbsolutePath();
+
+        String folderPath = path2 + File.separator +folderName;
+        filePath =path2 +File.separator+folderName +File.separator+fileName +"mp4";
+        File fileFolderPath = new File(folderPath);
+        fileFolderPath.mkdir();
+
+        File file = new File(filePath);
+        Uri outputFileURi =Uri.fromFile(file);
+*/
         mPreview=findViewById(R.id.mPreview);
         if (path.contains("mp4")){
             File file=new File(path);

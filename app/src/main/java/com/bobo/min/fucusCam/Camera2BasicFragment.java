@@ -47,6 +47,7 @@ import android.media.ImageReader;
 import android.media.MediaRecorder;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.support.annotation.NonNull;
@@ -114,7 +115,7 @@ public class Camera2BasicFragment extends Fragment
     /**
      * Tag for the {@link Log}.
      */
-    private static final String TAG = "Camera2BasicFragment";
+    private static final String TAG = "FOCUS_ON_ME";//min revise it 03.02
 
     /**
      * Camera state: Showing camera preview.
@@ -526,7 +527,7 @@ public class Camera2BasicFragment extends Fragment
         picture.setOnTouchListener(recordTouchListener);
         camera_flash=(ImageView)view.findViewById(R.id.camera_flash);
         mTextureView = (AutoFitTextureView) view.findViewById(R.id.texture);
-        long duration = 30 * 1000;
+        long duration = 30 * 1000;//기간인데 뭐지??? 30초 관련된건가??
 
         linearTimer = new LinearTimer.Builder()
                 .linearTimerView(linearTimerView)
@@ -1478,8 +1479,9 @@ public class Camera2BasicFragment extends Fragment
     private String getVideoFilePath(Context context) {
         final File dir = context.getExternalFilesDir(null);
         return (dir == null ? "" : (dir.getAbsolutePath() + "/"))
-                + System.currentTimeMillis() + ".mp4";
-    }
+                + System.currentTimeMillis() + ".mp4";// 확장자 명 + millsec + 경로 인데.... 이파일이
+        //전에 저장하면 .~ 파일로 들어가야만 볼수 있어서 외보에 보일려면 어떻게 해야할까???
+    }//왠지 이거가 저장하는 경로같은데??
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void startRecordingVideo() {

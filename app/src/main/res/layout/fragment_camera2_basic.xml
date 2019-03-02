@@ -30,7 +30,7 @@
     <ImageView
         android:id="@+id/camera_rotate"
         android:src="@drawable/ic_rotate_camera"
-        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_marginTop="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -38,19 +38,58 @@
     <TextView
         android:id="@+id/time"
         android:layout_marginTop="15dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginLeft="190dp"
         android:textColor="@color/white"
-        android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <ImageView
         android:id="@+id/camera_flash"
-        android:layout_below="@id/camera_rotate"
         android:src="@drawable/ic_flash_on"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="390dp"
         android:layout_marginTop="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:id="@+id/control_fil"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@id/control"
+        android:layout_marginLeft="30dp"
+        android:paddingBottom="10dp"
+        android:layout_alignParentBottom="true">
+
+        <ImageView android:id="@+id/filter"
+            android:layout_gravity="center"
+            android:src="@drawable/circle"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="85dp"
+            android:layout_height="85dp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/control_gall"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_toLeftOf="@id/control"
+        android:layout_marginRight="30dp"
+        android:paddingBottom="10dp"
+        android:layout_alignParentBottom="true">
+
+        <ImageView android:id="@+id/gallery"
+            android:layout_gravity="center"
+            android:src="@drawable/circle"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="85dp"
+            android:layout_height="85dp" />
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_centerHorizontal="true"
@@ -66,9 +105,9 @@
             android:src="@drawable/circle"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_width="100dp"
+            android:layout_width="85dp"
             android:layout_marginTop="10dp"
-            android:layout_height="100dp" />
+            android:layout_height="85dp" />
 
         <io.github.krtkush.lineartimer.LinearTimerView
             android:id="@+id/linearTimer"
