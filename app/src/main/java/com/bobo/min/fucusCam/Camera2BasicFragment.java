@@ -1259,7 +1259,7 @@ public class Camera2BasicFragment extends Fragment
             }
             case R.id.gallery :{
                 //gallery picker 관련 함수 호출하기 혹은 intent로 넘기기
-
+                start();
                 break;
             }
             case R.id.filter: {
@@ -1268,6 +1268,56 @@ public class Camera2BasicFragment extends Fragment
             }
         }
     }
+
+
+    private TextView textView;
+
+    private ArrayList<com.zet.enterprises.multimediapicker.model.Image> images = new ArrayList<>();
+
+    private int REQUEST_CODE_PICKER = 2000;
+
+    // Recomended builder
+    public void start() {
+        MultimediaPicker.create(this)
+                .folderMode(true) // set folder mode (false by default)
+                .folderTitle("Folder") // folder selection title
+                .imageTitle("Tap to select") // image selection title
+                .single() // single mode
+                .multi() // multi mode (default mode)
+                .limit(10) // max images can be selected (999 by default)
+                .showCamera(true) // show camera or not (true by default)
+                .imageDirectory("Camera")   // captured image directory name ("Camera" folder by default)
+                .origin(images) // original selected images, used in multi mode
+                .start(REQUEST_CODE_PICKER); // start image picker activity with request code
+    }
+
+    // Traditional intent
+    public void startWithIntent() {
+        Intent intent = new Intent(getActivity(), GalleryPickerActivity.class);
+
+        intent.putExtra(GalleryPickerActivity.INTENT_EXTRA_FOLDER_MODE, true);
+        intent.putExtra(GalleryPickerActivity.INTENT_EXTRA_MODE, GalleryPickerActivity.MODE_MULTIPLE);
+        intent.putExtra(GalleryPickerActivity.INTENT_EXTRA_LIMIT, 10);
+        intent.putExtra(GalleryPickerActivity.INTENT_EXTRA_SHOW_CAMERA, true);
+        intent.putExtra(GalleryPickerActivity.INTENT_EXTRA_SELECTED_IMAGES, images);
+        intent.putExtra(GalleryPickerActivity.INTENT_EXTRA_FOLDER_TITLE, "Album");
+        intent.putExtra(GalleryPickerActivity.INTENT_EXTRA_IMAGE_TITLE, "Tap to select images");
+        intent.putExtra(GalleryPickerActivity.INTENT_EXTRA_IMAGE_DIRECTORY, "Camera");
+        startActivityForResult(intent, REQUEST_CODE_PICKER);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_PICKER && resultCode == RESULT_OK && data != null) {
+            images = data.getParcelableArrayListExtra(GalleryPickerActivity.INTENT_EXTRA_SELECTED_IMAGES);
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0, l = images.size(); i < l; i++) {
+                sb.append(images.get(i).getPath() + "\n");
+            }
+            textView.setText(sb.toString());
+        }
+    }
+//코드를 가져 오긴 했음!
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

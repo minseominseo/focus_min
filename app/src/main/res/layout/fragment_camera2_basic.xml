@@ -30,7 +30,7 @@
     <ImageView
         android:id="@+id/camera_rotate"
         android:src="@drawable/ic_rotate_camera"
-        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -45,7 +45,7 @@
     <ImageView
         android:id="@+id/camera_flash"
         android:src="@drawable/ic_flash_on"
-        android:layout_marginLeft="390dp"
+        android:layout_marginLeft="380dp"
         android:layout_marginTop="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
