@@ -204,6 +204,9 @@ public class Camera2BasicFragment extends Fragment
     private ImageView camera_flash;
     boolean startRecordingcalled=false;
 
+    private ImageView gallery;
+    private ImageView filter;
+
     private LinearTimer linearTimer;
     private TextView time;
 
@@ -519,15 +522,24 @@ public class Camera2BasicFragment extends Fragment
         view.findViewById(R.id.picture).setOnClickListener(this);
         view.findViewById(R.id.camera_flash).setOnClickListener(this);
         view.findViewById(R.id.camera_rotate).setOnClickListener(this);
+
+        view.findViewById(R.id.gallery).setOnClickListener(this);//갤러리picker관련된 이미지view- add by min
+        view.findViewById(R.id.filter).setOnClickListener(this);//filter 관련 전환 이미지 view -add by min
+
         //  view.findViewById(R.id.info).setOnClickListener(this);
         LinearTimerView  linearTimerView = view.findViewById(R.id.linearTimer);
         time =view. findViewById(R.id.time);
         picture =  view.findViewById(R.id.picture);
         picture.setOnLongClickListener(recordHoldListener);
         picture.setOnTouchListener(recordTouchListener);
+
         camera_flash=(ImageView)view.findViewById(R.id.camera_flash);
         mTextureView = (AutoFitTextureView) view.findViewById(R.id.texture);
-        long duration = 30 * 1000;//기간인데 뭐지??? 30초 관련된건가??
+
+        gallery=(ImageView)view.findViewById(R.id.gallery);//gallery 추가 한거 -min
+        filter =(ImageView)view.findViewById(R.id.filter);//filter 추가한거 -min
+
+        long duration = 10 * 1000;//기간인데 뭐지??? 30초 관련된건가??//최대 10ch
 
         linearTimer = new LinearTimer.Builder()
                 .linearTimerView(linearTimerView)
@@ -1237,6 +1249,14 @@ public class Camera2BasicFragment extends Fragment
             }
             case R.id.camera_rotate: {
                 switchCamera();
+                break;
+            }
+            case R.id.gallery :{
+                //gallery picker 관련 함수 호출하기 혹은 intent로 넘기기
+                break;
+            }
+            case R.id.filter: {
+                //filter관련된거 버튼임
                 break;
             }
         }
