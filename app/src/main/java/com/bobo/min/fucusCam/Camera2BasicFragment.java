@@ -57,6 +57,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.Range;
 import android.util.Size;
@@ -72,6 +73,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aryan.dhankar.customcamera.R;
+import com.zet.enterprises.multimediapicker.GalleryPickerActivity;
+import com.zet.enterprises.multimediapicker.MultimediaPicker;
+import com.zetenterprises.sample.MainActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -87,6 +91,8 @@ import java.util.concurrent.TimeUnit;
 
 import io.github.krtkush.lineartimer.LinearTimer;
 import io.github.krtkush.lineartimer.LinearTimerView;
+
+import static android.support.v4.provider.FontsContractCompat.FontRequestCallback.RESULT_OK;
 
 public class Camera2BasicFragment extends Fragment
         implements View.OnClickListener, ActivityCompat.OnRequestPermissionsResultCallback , FragmentCompat.OnRequestPermissionsResultCallback,LinearTimer.TimerListener{
@@ -1253,10 +1259,11 @@ public class Camera2BasicFragment extends Fragment
             }
             case R.id.gallery :{
                 //gallery picker 관련 함수 호출하기 혹은 intent로 넘기기
+
                 break;
             }
             case R.id.filter: {
-                //filter관련된거 버튼임
+
                 break;
             }
         }
