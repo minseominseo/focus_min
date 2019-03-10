@@ -213,6 +213,8 @@ public class Camera2BasicFragment extends Fragment
     private ImageView gallery;
     private ImageView filter;
 
+
+    private TextView textView;//얘는 picker에서 확인이 필요함!
     private LinearTimer linearTimer;
     private TextView time;
 
@@ -522,16 +524,30 @@ public class Camera2BasicFragment extends Fragment
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_camera2_basic, container, false);
     }
-
+/*
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                start();
+            }
+        });
+    }*/
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         view.findViewById(R.id.picture).setOnClickListener(this);
         view.findViewById(R.id.camera_flash).setOnClickListener(this);
         view.findViewById(R.id.camera_rotate).setOnClickListener(this);
 
-        view.findViewById(R.id.gallery).setOnClickListener(this);//갤러리picker관련된 이미지view- add by min
+        /*view.findViewById(R.id.gallery).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                start();
+            }
+        });//갤러리picker관련된 이미지view- add by min
         view.findViewById(R.id.filter).setOnClickListener(this);//filter 관련 전환 이미지 view -add by min
-
+        */
         //  view.findViewById(R.id.info).setOnClickListener(this);
         LinearTimerView  linearTimerView = view.findViewById(R.id.linearTimer);
         time =view. findViewById(R.id.time);
@@ -1257,11 +1273,11 @@ public class Camera2BasicFragment extends Fragment
                 switchCamera();
                 break;
             }
-            case R.id.gallery :{
+            /*case R.id.gallery :{
                 //gallery picker 관련 함수 호출하기 혹은 intent로 넘기기
                 start();
-                break;
-            }
+
+            }*/
             case R.id.filter: {
 
                 break;
@@ -1269,8 +1285,6 @@ public class Camera2BasicFragment extends Fragment
         }
     }
 
-
-    private TextView textView;
 
     private ArrayList<com.zet.enterprises.multimediapicker.model.Image> images = new ArrayList<>();
 
@@ -1310,11 +1324,11 @@ public class Camera2BasicFragment extends Fragment
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE_PICKER && resultCode == RESULT_OK && data != null) {
             images = data.getParcelableArrayListExtra(GalleryPickerActivity.INTENT_EXTRA_SELECTED_IMAGES);
-            StringBuilder sb = new StringBuilder();
+            /*StringBuilder sb = new StringBuilder();
             for (int i = 0, l = images.size(); i < l; i++) {
                 sb.append(images.get(i).getPath() + "\n");
-            }
-            textView.setText(sb.toString());
+            }*/
+            //textView.setText(sb.toString());
         }
     }
 //코드를 가져 오긴 했음!
