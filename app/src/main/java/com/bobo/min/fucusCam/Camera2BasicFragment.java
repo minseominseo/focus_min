@@ -22,6 +22,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -541,14 +542,10 @@ public class Camera2BasicFragment extends Fragment
         view.findViewById(R.id.camera_flash).setOnClickListener(this);
         view.findViewById(R.id.camera_rotate).setOnClickListener(this);
 
-        /*view.findViewById(R.id.gallery).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                start();
-            }
-        });//갤러리picker관련된 이미지view- add by min
+        view.findViewById(R.id.gallery).setOnClickListener(this);//갤러리picker관련된 이미지view- add by min
         view.findViewById(R.id.filter).setOnClickListener(this);//filter 관련 전환 이미지 view -add by min
-        */
-        //  view.findViewById(R.id.info).setOnClickListener(this);
+
+        //view.findViewById(R.id.info).setOnClickListener(this);
         LinearTimerView  linearTimerView = view.findViewById(R.id.linearTimer);
         time =view. findViewById(R.id.time);
         picture =  view.findViewById(R.id.picture);
@@ -1273,11 +1270,11 @@ public class Camera2BasicFragment extends Fragment
                 switchCamera();
                 break;
             }
-            /*case R.id.gallery :{
-                //gallery picker 관련 함수 호출하기 혹은 intent로 넘기기
-                start();
-
-            }*/
+            case R.id.gallery :{
+                Intent intent =new Intent(Intent.ACTION_VIEW);
+                intent.setComponent(new ComponentName("com.zetenterprises.sample","com.zetenterprises.sample.MainActivity"));
+                startActivity(intent);
+            }
             case R.id.filter: {
 
                 break;

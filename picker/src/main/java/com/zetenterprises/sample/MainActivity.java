@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textView = (TextView) findViewById(R.id.text_view);
+        start();
+/*        textView = (TextView) findViewById(R.id.text_view);
         buttonPickImage = (Button) findViewById(R.id.button_pick_image);
         buttonPickImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+*/
     }
 
 
